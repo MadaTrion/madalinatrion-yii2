@@ -132,15 +132,74 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays about page.
+     * Displays biography page.
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionBiography()
     {
-        return $this->render('about');
+        return $this->render('biography');
     }
 
+    /**
+     * Displays video page.
+     *
+     * @return mixed
+     */
+    public function actionVideo()
+    {
+        return $this->render('video');
+    }
+
+    /**
+     * Displays audio page.
+     *
+     * @return mixed
+     */
+    public function actionAudio()
+    {
+        return $this->render('audio');
+    }
+
+    /**
+     * Displays awards page.
+     *
+     * @return mixed
+     */
+    public function actionAwards()
+    {
+        return $this->render('awards');
+    }
+
+    /**
+     * Displays events page.
+     *
+     * @return mixed
+     */
+    public function actionEvents()
+    {
+        return $this->render('events');
+    }
+
+    /**
+     * Displays gallery page.
+     *
+     * @return mixed
+     */
+    public function actionGallery()
+    {
+        return $this->render('gallery');
+    }
+
+    /**
+     * Displays album page.
+     *
+     * @return mixed
+     */
+    public function actionAlbum()
+    {
+        return $this->render('album');
+    }
     /**
      * Signs user up.
      *
