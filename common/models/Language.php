@@ -14,18 +14,27 @@ use Yii;
  * @property string $name_ascii
  * @property integer $status
  *
+ * @property AlbumImageTranslation[] $albumImageTranslations
+ * @property AlbumTranslation[] $albumTranslations
+ * @property AlbumVideoTranslation[] $albumVideoTranslations
+ * @property ArticleCategoryTranslation[] $articleCategoryTranslations
  * @property ArticleTranslation[] $articleTranslations
- * @property CategoryTranslation[] $categoryTranslations
+ * @property ConferenceActivityTranslation[] $conferenceActivityTranslations
+ * @property FeeTranslation[] $feeTranslations
  * @property LanguageTranslate[] $languageTranslates
  * @property LanguageSource[] $ids
+ * @property LinkCategoryTranslation[] $linkCategoryTranslations
  * @property PageTranslation[] $pageTranslations
  * @property SlideTranslation[] $slideTranslations
- * @property VideoCategoryTranslation[] $videoCategoryTranslations
- * @property VideoTranslation[] $videoTranslations
+ * @property SpeakerTranslation[] $speakerTranslations
+ * @property SponsorTranslation[] $sponsorTranslations
  */
 class Language extends \yii\db\ActiveRecord
 {
-    /**
+	const STATUS_INACTIVE = 0;
+	const STATUS_ACTIVE = 1;
+
+	/**
      * @inheritdoc
      */
     public static function tableName()
@@ -62,6 +71,39 @@ class Language extends \yii\db\ActiveRecord
         ];
     }
 
+	//region RELATIONS
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlbumImageTranslations()
+    {
+        return $this->hasMany(AlbumImageTranslation::className(), ['language_id' => 'language_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlbumTranslations()
+    {
+        return $this->hasMany(AlbumTranslation::className(), ['language_id' => 'language_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlbumVideoTranslations()
+    {
+        return $this->hasMany(AlbumVideoTranslation::className(), ['language_id' => 'language_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticleCategoryTranslations()
+    {
+        return $this->hasMany(ArticleCategoryTranslation::className(), ['language_id' => 'language_id']);
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -73,9 +115,17 @@ class Language extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategoryTranslations()
+    public function getConferenceActivityTranslations()
     {
-        return $this->hasMany(CategoryTranslation::className(), ['language_id' => 'language_id']);
+        return $this->hasMany(ConferenceActivityTranslation::className(), ['language_id' => 'language_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFeeTranslations()
+    {
+        return $this->hasMany(FeeTranslation::className(), ['language_id' => 'language_id']);
     }
 
     /**
@@ -97,6 +147,14 @@ class Language extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getLinkCategoryTranslations()
+    {
+        return $this->hasMany(LinkCategoryTranslation::className(), ['language_id' => 'language_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getPageTranslations()
     {
         return $this->hasMany(PageTranslation::className(), ['language_id' => 'language_id']);
@@ -113,16 +171,54 @@ class Language extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVideoCategoryTranslations()
+    public function getSpeakerTranslations()
     {
-        return $this->hasMany(VideoCategoryTranslation::className(), ['language_id' => 'language_id']);
+        return $this->hasMany(SpeakerTranslation::className(), ['language_id' => 'language_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVideoTranslations()
+    public function getSponsorTranslations()
     {
-        return $this->hasMany(VideoTranslation::className(), ['language_id' => 'language_id']);
+        return $this->hasMany(SponsorTranslation::className(), ['language_id' => 'language_id']);
     }
+	//endregion
+
+	//region CRUD
+	/**
+	 * Find all
+	 * @return array|yii\db\ActiveRecord[]
+	 */
+	public function findAllLanguages()
+	{
+		return self::find()
+			->select([
+				'language_id',
+				'name',
+				'name_ascii',
+				'status'
+			])
+			->all();
+	}
+
+	/**
+	 * Find app languages
+	 * @return array|yii\db\ActiveRecord[]
+	 */
+	public function findAppLanguages()
+	{
+		return self::find()
+			->select([
+				'language_id',
+				'name',
+				'name_ascii',
+				'status'
+			])
+			->where([
+				'status' => self::STATUS_ACTIVE
+			])
+			->all();
+	}
+	//endregion
 }
