@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\Migration;
-use backend\controllers\MigrationSearch;
+use backend\models\MigrationSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

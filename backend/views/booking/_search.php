@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\controllers\BookingSearch */
+/* @var $model backend\models\BookingSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -21,13 +21,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'first_name') ?>
 
-    <?= $form->field($model, 'event_type') ?>
+    <?= $form->field($model, 'type') ?>
 
     <?= $form->field($model, 'location') ?>
 
-    <?php // echo $form->field($model, 'event_date') ?>
+    <?php // echo $form->field($model, 'date') ?>
 
-    <?php // echo $form->field($model, 'nr_people') ?>
+    <?php // echo $form->field($model, 'people') ?>
 
     <?php // echo $form->field($model, 'team') ?>
 

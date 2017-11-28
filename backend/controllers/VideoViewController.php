@@ -4,7 +4,7 @@ namespace backend\controllers;
 
 use Yii;
 use common\models\VideoView;
-use backend\controllers\VideoViewSearch;
+use backend\models\VideoViewSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

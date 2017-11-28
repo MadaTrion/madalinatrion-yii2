@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\controllers\VideoViewSearch */
+/* @var $model backend\models\VideoViewSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

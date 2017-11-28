@@ -17,19 +17,17 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'group_id') ?>
-
     <?= $form->field($model, 'parent_id') ?>
 
     <?= $form->field($model, 'auth_key') ?>
 
-    <?= $form->field($model, 'username') ?>
+    <?= $form->field($model, 'password_hash') ?>
 
-    <?php // echo $form->field($model, 'password_hash') ?>
-
-    <?php // echo $form->field($model, 'password_reset_token') ?>
+    <?= $form->field($model, 'password_reset_token') ?>
 
     <?php // echo $form->field($model, 'email') ?>
+
+    <?php // echo $form->field($model, 'username') ?>
 
     <?php // echo $form->field($model, 'phone') ?>
 

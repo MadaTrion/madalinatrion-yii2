@@ -13,7 +13,7 @@ use Yii;
  * @property string $access_date
  * @property integer $deleted
  *
- * @property Video $video
+ * @property AlbumVideo $video
  */
 class VideoView extends \yii\db\ActiveRecord
 {
@@ -35,7 +35,7 @@ class VideoView extends \yii\db\ActiveRecord
             [['video_id', 'deleted'], 'integer'],
             [['access_date'], 'safe'],
             [['ip_address'], 'string', 'max' => 255],
-            [['video_id'], 'exist', 'skipOnError' => true, 'targetClass' => Video::className(), 'targetAttribute' => ['video_id' => 'id']],
+            [['video_id'], 'exist', 'skipOnError' => true, 'targetClass' => AlbumVideo::className(), 'targetAttribute' => ['video_id' => 'id']],
         ];
     }
 
@@ -58,6 +58,6 @@ class VideoView extends \yii\db\ActiveRecord
      */
     public function getVideo()
     {
-        return $this->hasOne(Video::className(), ['id' => 'video_id']);
+        return $this->hasOne(AlbumVideo::className(), ['id' => 'video_id']);
     }
 }

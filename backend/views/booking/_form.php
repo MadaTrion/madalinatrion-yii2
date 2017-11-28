@@ -16,13 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'event_type')->textInput() ?>
-
     <?= $form->field($model, 'location')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'event_date')->textInput() ?>
-
-    <?= $form->field($model, 'nr_people')->textInput() ?>
 
     <?= $form->field($model, 'team')->textarea(['rows' => 6]) ?>
 

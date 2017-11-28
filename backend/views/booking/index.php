@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel backend\controllers\BookingSearch */
+/* @var $searchModel backend\models\BookingSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Bookings');
@@ -27,10 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'last_name',
             'first_name',
-            'event_type',
+            'type',
             'location',
-            // 'event_date',
-            // 'nr_people',
+            // 'date',
+            // 'people',
             // 'team:ntext',
             // 'specification:ntext',
             // 'status',
