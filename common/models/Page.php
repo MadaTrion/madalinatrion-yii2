@@ -197,5 +197,43 @@ class Page extends \yii\db\ActiveRecord
 			->limit(1)
 			->one();
 	}
+
+
+	/**
+	 * Find pages by parent
+	 * @param $parent_id
+	 * @param $position
+	 * @return array|\yii\db\ActiveRecord[]
+	 */
+	public static function findPagesByParent($parent_id = null, $position = null)
+	{
+		return static::find()
+			->alias('p')
+			->select([
+				'p.id',
+				'p.parent_id',
+				'p.page_controller',
+				'p.page_action',
+				'pt.title',
+				'pt.slug',
+				'pt.anchor',
+			])
+			->joinWith([
+				'pageTranslations pt',
+				'pageTranslations.language l'
+			])
+			->where([
+				'p.deleted' => self::STATE_UNDELETED,
+				'p.status' => self::STATUS_ACTIVE,
+				'pt.language_id' => Yii::$app->language,
+				'l.status' => Language::STATUS_ACTIVE,
+			])
+			->andFilterWhere([
+				'p.parent_id' => $parent_id,
+			])
+			->andFilterWhere(['>', "FIND_IN_SET({$position}, p.position)", 0])
+			->orderBy(['p.sort_order' => SORT_ASC])
+			->all();
+	}
 	//endregion
 }

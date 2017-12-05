@@ -65,45 +65,52 @@ use common\models\Page;
             )
         ?>
         <nav class="mastnav signature-claus">
-            <ul class="main-menu signature-claus">
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="index.html">Home</a>
-                    <div class="sub-menu font3bold">
-                        <a href="index.html">fullscreen slider</a>
-                        <a href="index02.html">fullscreen video</a>
-                    </div>
-                </li>
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="biography.html">Biography</a>
-                </li>
-
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="awards.html"> Awards</a>
-                </li>
-
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="gallery.html">Gallery</a>
-                </li>
-
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="portofolio.html">Portofolio</a>
-                    <div class="sub-menu font3bold">
-                        <a href="audio.html">Audio</a>
-                        <a href="video.html">Video</a>
-
-                    </div>
-                </li>
-
-
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="events.html">Events</a>
-                </li>
-
-                <li>
-                    <a class="main-link font3bold sub-menu-trigger" href="contact.html">Contact</a>
-                </li>
-
-            </ul>
+            <?= PageMenu::widget([
+                'options' => [
+                    'class' => 'main-menu signature-claus'
+                ],
+                'position' => Page::POSITION_HEADER,
+                'startParentId' => 0,
+            ]) ?>
+<!--            <ul class="main-menu signature-claus">-->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="index.html">Home</a>-->
+<!--                    <div class="sub-menu font3bold">-->
+<!--                        <a href="index.html">fullscreen slider</a>-->
+<!--                        <a href="index02.html">fullscreen video</a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="biography.html">Biography</a>-->
+<!--                </li>-->
+<!---->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="awards.html"> Awards</a>-->
+<!--                </li>-->
+<!---->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="gallery.html">Gallery</a>-->
+<!--                </li>-->
+<!---->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="portofolio.html">Portofolio</a>-->
+<!--                    <div class="sub-menu font3bold">-->
+<!--                        <a href="audio.html">Audio</a>-->
+<!--                        <a href="video.html">Video</a>-->
+<!---->
+<!--                    </div>-->
+<!--                </li>-->
+<!---->
+<!---->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="events.html">Events</a>-->
+<!--                </li>-->
+<!---->
+<!--                <li>-->
+<!--                    <a class="main-link font3bold sub-menu-trigger" href="contact.html">Contact</a>-->
+<!--                </li>-->
+<!---->
+<!--            </ul>-->
         </nav>
     </div>
 </header>
