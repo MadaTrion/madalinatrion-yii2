@@ -141,7 +141,7 @@ class SiteController extends MainController
      */
     public function actionBiography()
     {
-        return $this->render('biography');
+        return $this->render('biography',['page' => $this->CurrentPage]);
     }
 
     /**

@@ -1186,4 +1186,8 @@ p {
   font-family: 'Madalina Trion_ss_regular', sans-serif;
 }
 
+.honeypot{
+    display: none;
+}
+
 

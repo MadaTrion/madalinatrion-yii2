@@ -13,7 +13,8 @@ class ContactForm extends Model
     public $name;
     public $email;
     public $subject;
-    public $body;
+    public $message;
+    public $honeypot;
     public $verifyCode;
 
 
@@ -23,12 +24,10 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
+        	// name, email, subject and body are required
+            [['name', 'email', 'subject', 'message'], 'required'],
             // email has to be a valid email address
-            ['email', 'email'],
-            // verifyCode needs to be entered correctly
-            ['verifyCode', 'captcha'],
+            ['email', 'email']
         ];
     }
 
@@ -54,7 +53,31 @@ class ContactForm extends Model
             ->setTo($email)
             ->setFrom([$this->email => $this->name])
             ->setSubject($this->subject)
-            ->setTextBody($this->body)
+            ->setTextBody($this->message)
             ->send();
     }
+
+	/**
+	 * Sends an email to the support.
+	 *
+	 * @return bool the result of the mailer operation
+	 */
+	public function contact()
+	{
+		// Validate the current model form
+		if (!$this->validate()) {
+			return false;
+		}
+		// Send email
+		return Yii::$app
+			->mailer
+			->compose(
+				['html' => 'contact-html', 'text' => 'contact-text'],
+				['model' => $this]
+			)
+			->setFrom([$this->email => $this->name])
+			->setTo(Yii::$app->params['settings']['contact']['email'])
+			->setSubject($this->subject)
+			->send();
+	}
 }

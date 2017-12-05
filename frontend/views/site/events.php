@@ -3,8 +3,7 @@
 <section class="mastwrap signature-claus">
     <section class="first-fold signature-claus fullheight journal-bg parallax" data-stellar-background-ratio="0.5">
         <section class="main-heading fixed-top">
-            <h1 class="black font3bold">Journal</h1>
-            <h6 class="black font3light">The best things that we can offer you</h6>
+            <h1 class="black font3bold"><?= $this->title ?></h1>
             <div class="liner color-bg"></div>
         </section>
     </section>
