@@ -1,3 +1,8 @@
+<?php
+use yii\helpers\Html;
+use common\widgets\PageMenu;
+use common\models\Page;
+?>
 <!-- mobile only navigation : starts -->
 <nav class="mobile-nav signature-claus">
     <ul class="slimmenu">
@@ -50,7 +55,15 @@
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <header class="masthead signature-claus">
     <div class="masthead-inner">
-        <a href="index.html"><img alt="" title="" src="img/logo-gold.png" height="60"></a>
+        <?=
+            Html::a(
+                Html::img('@web/img/logo-gold.png', ['alt' => Yii::$app->params['siteTitle'], 'height' => 60]),
+                ['site/index'],
+                [
+                    'title' => Yii::$app->params['siteTitle'],
+                ]
+            )
+        ?>
         <nav class="mastnav signature-claus">
             <ul class="main-menu signature-claus">
                 <li>

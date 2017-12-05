@@ -5,6 +5,8 @@ $slides = Slide::findAllSlides();
 
 <!-- JS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<?php if (count($slides)): ?>
+
 <script>
     $('body').vegas({
         preload:true,
@@ -19,3 +21,6 @@ $slides = Slide::findAllSlides();
         ]
     });
 </script>
+
+<?php endif; ?>
+
