@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Slide;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -72,7 +73,9 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',[
+            'slides' => Slide::findAllSlides()
+        ] );
     }
 
     /**

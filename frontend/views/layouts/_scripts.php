@@ -1,3 +1,8 @@
+<?php
+use common\models\Slide;
+$slides = Slide::findAllSlides();
+?>
+
 <!-- JS
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script>
@@ -8,9 +13,9 @@
         transition: 'swirlRight',
         transitionDuration: 3000,
         slides: [
-            { src: 'img/bg/01.jpg' },
-            { src: 'img/bg/02.jpg' },
-            { src: 'img/bg/03.jpg' }
+            <?php foreach ($slides as $slide): ?>
+            { src: 'uploads/images/<?= $slide->image ?>' },
+            <?php endforeach; ?>
         ]
     });
 </script>
