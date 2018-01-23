@@ -181,7 +181,17 @@ class SiteController extends MainController
      */
     public function actionEvents()
     {
-        return $this->render('events');
+        return $this->render('booking');
+    }
+
+    /**
+     * Displays events page.
+     *
+     * @return mixed
+     */
+    public function actionEvent()
+    {
+        return $this->render('event');
     }
 
     /**

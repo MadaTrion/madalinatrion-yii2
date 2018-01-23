@@ -24,3 +24,11 @@ $slides = Slide::findAllSlides();
 
 <?php endif; ?>
 
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker12').datetimepicker({
+            inline: true,
+            sideBySide: true
+        });
+    });
+</script>
